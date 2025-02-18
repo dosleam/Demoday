@@ -1,4 +1,4 @@
-# 🎮 VR Training Game - Unity 2022.3.50f1 🚀
+# 🎮 Echo Shot VR - Unity 2022.3.50f1 🚀
 
 ## 📌 Description
 Ce projet est un jeu en réalité virtuelle développé sous Unity 2022.3.50f1 avec OpenXR. Il vise à apprendre les bases de la VR en mettant en place des mécaniques fondamentales telles que le déplacement, l'interaction avec des objets et l'utilisation d'armes en VR.
