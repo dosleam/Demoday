@@ -8,6 +8,9 @@ public class GunShoot : MonoBehaviour
     public Transform firePoint;
     public float bulletSpeed = 20f;
     public InputActionReference shootAction; // Référence à l'input action XRI
+    
+    // Ajoutez une référence à l'AudioSource pour le son du tir
+    public AudioSource gunshotAudio;
 
     private bool isHeld = false; // Indique si l’arme est en main
 
@@ -54,7 +57,7 @@ public class GunShoot : MonoBehaviour
     void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        
+
         // Correction de l'orientation
         bullet.transform.Rotate(0, 90, 0); 
 
@@ -70,5 +73,11 @@ public class GunShoot : MonoBehaviour
 
         // Appliquer la force pour que la balle avance
         rb.velocity = firePoint.forward * bulletSpeed;
+
+        // Jouer le son de tir
+        if (gunshotAudio != null)
+        {
+            gunshotAudio.Play();
+        }
     }
 }
