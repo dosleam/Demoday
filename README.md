@@ -52,11 +52,12 @@ L'objectif principal de ce projet est de fournir une introduction pratique aux b
 | 🎯 Action | 🎮 Contrôleur | 📝 Description |
 |--------|------------|-------------|
 | 🚶 Déplacement | 🎮 Joystick gauche | Se déplacer fluidement |
-| 🔄 Rotation de la vue | 🎮 Joystick droit | Tourner la caméra |
+| 🔄 Rotation De La Vue | 🎮 Joystick droit | Tourner la caméra |
 | ✋ Interaction | 🎮 Bouton de saisie | Prendre et empiler des objets, interagir à distance |
 | 🔍 Zoom/Dézoom | 🔘 Joystick droite/gauche | Rapproche ou éloigne les objets |
-| 🔄 Rotation des objets | 🖐️ Joystick droite/gauche | Faire pivoter les objets |
+| 🔄 Rotation Des Objets | 🖐️ Joystick droite/gauche | Faire pivoter les objets |
 | 🔫 Tir | 🎮 Gâchette | Utiliser les armes |
+| 🕹️ Pause | 🎮 Bouton Meta Manette Gauche | Ouvre le menu pause |
 
 ## ✍️ Auteur
 Jeremy Sousa [[dosleam](https://github.com/dosleam)] x Florian Bombeeck [[Pandor3](https://github.com/Pandor3)]
