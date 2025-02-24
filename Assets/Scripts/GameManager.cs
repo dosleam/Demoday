@@ -1,61 +1,70 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public Text countdownText; // Pour afficher le temps
-    public Text scoreText; // Pour afficher le score
-    public GameObject[] coloredTargets; // Liste des cibles de couleur
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timerText;
 
     private int score = 0;
-    private float timer = 0f;
-    private bool isGameActive = false;
+    private float countdownTime = 30f;
+    private bool isCountdownActive = false;
+
+    void Start()
+    {
+        UpdateScoreUI();
+        UpdateTimerUI();
+    }
 
     void Update()
     {
-        if (isGameActive)
+        if (isCountdownActive)
         {
-            timer -= Time.deltaTime;
-            countdownText.text = "Time: " + Mathf.Ceil(timer).ToString();
+            countdownTime -= Time.deltaTime;
+            UpdateTimerUI();
 
-            if (timer <= 0)
+            if (countdownTime <= 0)
             {
+                isCountdownActive = false;
                 EndGame();
             }
         }
     }
 
-    public void StartCountdown()
-    {
-        timer = 30f; // Définir le compte à rebours
-        score = 0; // Réinitialiser le score
-        isGameActive = true;
-
-        ActivateTargets(true); // Activer les cibles colorées
-    }
-
     public void AddScore(int points)
     {
-        if (isGameActive)
+        if (isCountdownActive)
         {
             score += points;
-            scoreText.text = "Score: " + score;
+            UpdateScoreUI();
         }
     }
 
-    private void EndGame()
+    public void StartCountdown()
     {
-        isGameActive = false;
-        ActivateTargets(false); // Désactiver les cibles
-        countdownText.text = "Time's Up!";
-        Debug.Log("Final Score: " + score);
-    }
-
-    private void ActivateTargets(bool active)
-    {
-        foreach (GameObject target in coloredTargets)
+        if (!isCountdownActive)
         {
-            target.SetActive(active);
+            isCountdownActive = true;
+            countdownTime = 30f;
+            score = 0;
+            UpdateScoreUI();
+            UpdateTimerUI();
         }
+    }
+
+    void UpdateScoreUI()
+    {
+        scoreText.text = "Score: " + score;
+    }
+
+    void UpdateTimerUI()
+    {
+        timerText.text = "Time: " + Mathf.Ceil(countdownTime) + "s";
+    }
+
+    void EndGame()
+    {
+        Debug.Log("Temps écoulé ! Score final : " + score);
+        // Ici, on pourrait enregistrer le score ou afficher un message de fin
     }
 }
