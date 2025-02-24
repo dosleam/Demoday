@@ -2,25 +2,25 @@ using UnityEngine;
 
 public class BulletImpact : MonoBehaviour
 {
-    public GameObject impactPrefab; // Le prefab de l'impact (cylindre aplati)
-    public float impactDuration = 2f; // Durée avant que l'impact disparaisse
+    public GameObject impactEffect; // Référence au prefab de l'impact
+    public float impactForce = 10f; // Force d'impact, si tu veux appliquer une force à l'objet
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-        // Vérifie si la balle touche une cible
-        if (collision.gameObject.CompareTag("Target")) // Assure-toi que tes cibles ont le tag "Target"
+        // Crée l'effet d'impact à la position de collision
+        Vector3 impactPoint = collision.contacts[0].point;
+        Quaternion impactRotation = Quaternion.FromToRotation(Vector3.forward, collision.contacts[0].normal);
+        
+        // Instancier l'effet d'impact
+        Instantiate(impactEffect, impactPoint, impactRotation);
+
+        // Si tu veux appliquer une force à l'objet impacté
+        if (collision.rigidbody != null)
         {
-            // Obtenir le point d'impact et la normale de la surface touchée
-            ContactPoint contact = collision.contacts[0];
-
-            // Créer l'impact à l'endroit du contact
-            GameObject impact = Instantiate(impactPrefab, contact.point, Quaternion.LookRotation(contact.normal));
-
-            // Détruire l'impact après un délai
-            Destroy(impact, impactDuration);
-
-            // Détruire la balle après l'impact
-            Destroy(gameObject);
+            collision.rigidbody.AddForce(-collision.contacts[0].normal * impactForce, ForceMode.Impulse);
         }
+
+        // Détruire la balle après impact
+        Destroy(gameObject);
     }
 }
