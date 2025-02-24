@@ -18,15 +18,14 @@ Ce projet est un jeu en réalité virtuelle développé sous Unity 2022.3.50f1 a
 - 🔫 Deux armes disponibles :
   - **🔫 Pistolet**
   - **🔫 Fusil d'assaut**
-- 🎯 Cibles rotatives de différentes couleurs pour l'entraînement au tir.
+- 🎯 Cibles en mouvement de différentes couleurs pour l'entraînement au tir.
 
 ### 🏆 Système de score
 - Le score est déterminé en fonction de la couleur de la cible touchée :
-  - ⚪ **Blanc** : 0 points
-  - 🟢 **Vert** : 10 points
-  - ⚫ **Cercle noir extérieur** : 25 points
-  - 🔴 **Rouge** : 50 points
-  - 🎯 **Cercle central noir** : 100 points
+  - 🟢 **Vert** : 5 et 10 points
+  - 🟡 **Jaune** : 20 et 25 points
+  - 🔵 **Bleu** : 40 et 50 points
+  - 🔴 **Rouge** : 75 et 100 points
 
 ## 🎯 Objectif du projet
 L'objectif principal de ce projet est de fournir une introduction pratique aux bases du développement VR, notamment :
@@ -60,6 +59,7 @@ L'objectif principal de ce projet est de fournir une introduction pratique aux b
 | 🔫 Tir | 🎮 Gâchette | Utiliser les armes |
 
 ## ✍️ Auteur
-Nom : [Jeremy Sousa]  
-📧 Contact : [jeremy.sousa05@gmail.com]
+Jeremy Sousa [[dosleam](https://github.com/dosleam)] x Florian Bombeeck [[Pandor3](https://github.com/Pandor3)]
+
+📧 Contact : [jeremy.sousa05@gmail.com] x [9325@holbertonstudents.com]
 
