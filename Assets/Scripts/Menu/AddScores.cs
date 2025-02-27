@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
@@ -24,6 +25,8 @@ public class ScoreManager : MonoBehaviour
     public Transform leaderboardContent;
     public GameObject scoreEntryPrefab;
 
+    public Button closeButton;
+
     // Ceci ira chercher le script add_score.php
     private string addScorebyURL = "https://echo-shot-vr.alwaysdata.net/echo-shot-vr_scores/add_score.php";
 
@@ -31,7 +34,7 @@ public class ScoreManager : MonoBehaviour
 
     public void SendScore(string playerID, int score)
     {
-        StartCoroutine(SendScoreCoroutine(playerID), score);
+        StartCoroutine(SendScoreCoroutine(playerID, score));
     }
 
     public void GetScores()
@@ -92,17 +95,24 @@ public class ScoreManager : MonoBehaviour
                 string json = www.downloadHandler.text;
                 ScoreList scoreList = JsonUtility.FromJson<ScoreList>("{\"scores\":" + json + "}");
 
+                // Ceci va trier les scores du plus grand au plus petit et les limiter à 10
+                var sortedScores = scoreList.scores
+                                    .OrderByDescending(s => s.score)
+                                    .Take(10)
+                                    .ToArray();
+
+
                 foreach (Transform child in leaderboardContent)
                 {
-                    Destroy(child.GameObject);
+                    Destroy(child.gameObject);
                 }
             
                 foreach (ScoreEntry entry in scoreList.scores)
                 {
-                    GameObject newEntry = Instentiate(scoreEntryPrefab, leaderboardContent);
+                    GameObject newEntry = Instantiate(scoreEntryPrefab, leaderboardContent);
                     TextMeshProUGUI[] texts = newEntry.GetComponentsInChildren<TextMeshProUGUI>();
-                    texts[].text = entry.pseudonyme;
-                    texts[1].text = entry.score.toString();
+                    texts[0].text = entry.pseudonyme;
+                    texts[1].text = entry.score.ToString();
                 }
             }
         }
