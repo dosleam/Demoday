@@ -1,16 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public AddScores addScores;
     public GameObject leaderboardPanel;
-    private bool isLeaderboardVisible = false;
 
     public void ToggleLeaderboard()
     {
-        isLeaderboardVisible = !isLeaderboardVisible;
-        leaderboardPanel.SetActive(isLeaderboardVisible);
+        if (leaderboardPanel.activeSelf)
+        {
+            leaderboardPanel.SetActive(false);
+        }
+        else
+        {
+            leaderboardPanel.SetActive(true);
+            addScores.GetScores();
+        }
     }
 
     public void StartGame()

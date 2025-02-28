@@ -3,13 +3,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
-using UnityEngine.UI;
-
 
 [System.Serializable]
 public class ScoreEntry
 {
-    public string pseudonyme;
     public int score;
 }
 
@@ -21,48 +18,38 @@ public class ScoreList
 
 public class AddScores : MonoBehaviour
 {
-    public GameObject leaderboardPanel;
     public Transform leaderboardContent;
     public GameObject scoreEntryPrefab;
+    public GameObject leaderboardPanel;
 
-    public Button closeButton;
-
-    // Ceci ira chercher le script add_score.php
     private string addScorebyURL = "https://echo-shot-vr.alwaysdata.net/echo-shot-vr_scores/add_score.php";
-
     private string getScoresbyURL = "https://echo-shot-vr.alwaysdata.net/echo-shot-vr_scores/get_scores.php";
-
-    public void SendScore(string playerID, int score)
-    {
-        StartCoroutine(SendScoreCoroutine(playerID, score));
-    }
-
-    public void GetScores()
-    {
-        StartCoroutine(GetScoresCoroutine());
-    }
-
-    void Start()
-    {
-        leaderboardPanel.SetActive(false);
-        closeButton.onClick.AddListener(CloseLeaderboard);
-    }
 
     public void ShowLeaderboard()
     {
         leaderboardPanel.SetActive(true);
-        StartCoroutine(GetScoresCoroutine());
+        GetScores();
     }
 
-    void CloseLeaderboard()
+    public void CloseLeaderboard()
     {
         leaderboardPanel.SetActive(false);
     }
 
-    IEnumerator SendScoreCoroutine(string playerID, int score)
+    public void SendScore(int score)
+    {
+        StartCoroutine(SendScoreCoroutine(score));
+    }
+
+    public void GetScores()
+    {
+        Debug.Log("Chargement des scores...");
+        StartCoroutine(GetScoresCoroutine());
+    }
+
+    IEnumerator SendScoreCoroutine(int score)
     {
         WWWForm form = new WWWForm();
-        form.AddField("pseudonyme", playerID);
         form.AddField("score", score);
 
         using (UnityWebRequest www = UnityWebRequest.Post(addScorebyURL, form))
@@ -88,32 +75,47 @@ public class AddScores : MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError("Erreur en récupérant les scores: " + www.error);
+                Debug.LogError("Erreur en récupérant les scores : " + www.error);
+                yield break;
             }
-            else
-            {
-                string json = www.downloadHandler.text;
-                ScoreList scoreList = JsonUtility.FromJson<ScoreList>("{\"scores\":" + json + "}");
 
-                // Ceci va trier les scores du plus grand au plus petit et les limiter à 10
+            string json = www.downloadHandler.text;
+            Debug.Log("Réponse du serveur : " + json);
+
+            try
+            {
+                ScoreList scoreList = JsonUtility.FromJson<ScoreList>(json);
+
+                if (scoreList == null || scoreList.scores == null || scoreList.scores.Length == 0)
+                {
+                    Debug.LogWarning("Aucun score trouvé.");
+                    yield break;
+                }
+
                 var sortedScores = scoreList.scores
                                     .OrderByDescending(s => s.score)
                                     .Take(10)
                                     .ToArray();
 
-
+                // Nettoyage du leaderboard existant
                 foreach (Transform child in leaderboardContent)
                 {
                     Destroy(child.gameObject);
                 }
-            
-                foreach (ScoreEntry entry in scoreList.scores)
+
+                // Création des nouvelles entrées
+                foreach (ScoreEntry entry in sortedScores)
                 {
                     GameObject newEntry = Instantiate(scoreEntryPrefab, leaderboardContent);
                     TextMeshProUGUI[] texts = newEntry.GetComponentsInChildren<TextMeshProUGUI>();
-                    texts[0].text = entry.pseudonyme;
-                    texts[1].text = entry.score.ToString();
+
+                    if (texts.Length > 0)
+                        texts[0].text = entry.score.ToString();
                 }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Erreur lors du parsing JSON : " + e.Message);
             }
         }
     }

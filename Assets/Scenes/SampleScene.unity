@@ -17040,7 +17040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1297004827}
-  - component: {fileID: 1297004826}
+  - component: {fileID: 1297004828}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17048,20 +17048,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1297004826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1297004825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d789802e6d10974b91c42281efd3535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 357227987}
-  timerText: {fileID: 1955039433}
 --- !u!4 &1297004827
 Transform:
   m_ObjectHideFlags: 0
@@ -17077,6 +17063,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1297004828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297004825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d789802e6d10974b91c42281efd3535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 357227987}
+  timerText: {fileID: 1955039433}
+  addScores: {fileID: 0}
 --- !u!1 &1312428906
 GameObject:
   m_ObjectHideFlags: 0
@@ -21232,7 +21233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d54a0ac146bb042af1d88a705685f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaderboardPanel: {fileID: 0}
+  addScores: {fileID: 0}
 --- !u!1 &1767471441
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,15 +5,23 @@ public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
+    public AddScores addScores;
 
     private int score = 0;
+    private int bestScore = 0;
     private float countdownTime = 30f;
     private bool isCountdownActive = false;
 
     void Start()
     {
+        bestScore = PlayerPrefs.GetInt("Best Score", 0);
         UpdateScoreUI();
         UpdateTimerUI();
+
+        if (addScores == null)
+        {
+            addScores = FindObjectOfType<AddScores>();
+        }
     }
 
     void Update()
@@ -32,13 +40,19 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddScore(int points)
+{
+    if (isCountdownActive)
     {
-        if (isCountdownActive)
-        {
-            score += points;
-            UpdateScoreUI();
-        }
+        score += points;
+        UpdateScoreUI();
     }
+
+    // Envoi du score à la base de données quand le timer est terminé
+    if (!isCountdownActive && addScores != null)
+    {
+        addScores.SendScore(score);
+    }
+}
 
     public void StartCountdown()
     {
@@ -66,5 +80,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Temps écoulé ! Score final : " + score);
         // Ici, on pourrait enregistrer le score ou afficher un message de fin
+
+        if (score > bestScore)
+        {
+            bestScore = score;
+            PlayerPrefs.SetInt("Best Score", bestScore);
+            PlayerPrefs.Save();
+
+            addScores.SendScore(bestScore);
+        }
     }
 }
