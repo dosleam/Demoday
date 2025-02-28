@@ -19,7 +19,7 @@ public class ScoreList
     public ScoreEntry[] scores;
 }
 
-public class ScoreManager : MonoBehaviour
+public class AddScores : MonoBehaviour
 {
     public GameObject leaderboardPanel;
     public Transform leaderboardContent;
