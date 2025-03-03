@@ -62,5 +62,5 @@ L'objectif principal de ce projet est de fournir une introduction pratique aux b
 ## ✍️ Auteur
 Jeremy Sousa [[dosleam](https://github.com/dosleam)] x Florian Bombeeck [[Pandor3](https://github.com/Pandor3)]
 
-📧 Contact : [jeremy.sousa05@gmail.com] x [9325@holbertonstudents.com]
+📧 Contact : [jeremy.sousa05@gmail.com] x [florian.bombeeck@holbertonstudents.com]
 
