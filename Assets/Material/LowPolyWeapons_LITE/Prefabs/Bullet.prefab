@@ -227,7 +227,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 018c411949392384a898dc29f230234c, type: 2}
+  - {fileID: 2100000, guid: 5ca7b578a9c26484ba274686d43d125b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -279,7 +279,7 @@ LineRenderer:
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
+      ctime0: 65535
       ctime1: 65535
       ctime2: 0
       ctime3: 0
