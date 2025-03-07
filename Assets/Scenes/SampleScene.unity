@@ -18619,7 +18619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7690080512698956842, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_DefaultParameters.m_ApertureSize
-      value: 0.75
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7690080512698956843, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalScale.x
@@ -28327,12 +28327,15 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 821431594}
   - {fileID: 1297004827}
+  - {fileID: 1425337365}
   - {fileID: 1426730727}
   - {fileID: 856812807}
   - {fileID: 2059657098}
   - {fileID: 1753925569}
+  - {fileID: 795666354}
   - {fileID: 569230691}
   - {fileID: 936315310}
+  - {fileID: 1473703807}
   - {fileID: 1979180571}
   - {fileID: 1160803837}
   - {fileID: 974807330}
@@ -28348,6 +28351,3 @@ SceneRoots:
   - {fileID: 1775581612}
   - {fileID: 129427243}
   - {fileID: 1053044928}
-  - {fileID: 795666354}
-  - {fileID: 1425337365}
-  - {fileID: 1473703807}
