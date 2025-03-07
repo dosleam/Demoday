@@ -1,3 +1,4 @@
+// Ceci permet de faire un système de score dans la scène principale
 using UnityEngine;
 using TMPro;
 
