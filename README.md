@@ -57,7 +57,6 @@ L'objectif principal de ce projet est de fournir une introduction pratique aux b
 | 🔍 Zoom/Dézoom | 🔘 Joystick droite/gauche | Rapproche ou éloigne les objets |
 | 🔄 Rotation Des Objets | 🖐️ Joystick droite/gauche | Faire pivoter les objets |
 | 🔫 Tir | 🎮 Gâchette | Utiliser les armes |
-| 🕹️ Pause | 🎮 Bouton Meta Manette Gauche | Ouvre le menu pause |
 
 ## ✍️ Auteur
 Jeremy Sousa [[dosleam](https://github.com/dosleam)] x Florian Bombeeck [[Pandor3](https://github.com/Pandor3)]
