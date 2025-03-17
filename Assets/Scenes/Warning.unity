@@ -613,8 +613,7 @@ MonoBehaviour:
   m_text: "Echo Shot VR\nCe projet a \xE9t\xE9 r\xE9alis\xE9 par deux \xE9tudiants
     de la Holberton School Bordeaux dans le cadre de l'\xE9preuve DemoDay. Il s'agit
     d'une exp\xE9rience VR con\xE7ue pour offrir une premi\xE8re immersion accessible
-    et interactive aux nouveaux acqu\xE9reurs de casques VR.\n\nCertaines s\xE9quences
-    peuvent contenir des effets lumineux susceptibles d'affecter les personnes photosensibles."
+    et interactive aux nouveaux acqu\xE9reurs de casques VR."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -872,7 +871,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363529358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 444}
+  m_LocalPosition: {x: 0, y: 0, z: 507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
